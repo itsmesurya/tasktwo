@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hacker News</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  </head>
+  <body style="font-color:black">
+    <nav style="background:orange" class="navbar navbar-default techfont custom-navbar">
+  <div class="container" style="color:black">
+
+      <b><a style="color:black" class='navbar-brand bigbrand' href="{% url 'posts:all' %}">[H]</a>
+      <a style="color:black" class='navbar-brand bigbrand' href="{% url 'posts:all' %}">HackerNews</a></b>
+
+
+           {% if user.is_authenticated %}
+           <ul class="nav navbar-nav navbar-left">
+                    <li><a style="color:black" href="{% url 'posts:create' %}" class="btn btn-simple">New</a></li>
+                    <li><a style="color:black" href="{% url 'posts:all_comments' %}" class="btn btn-simple">Comments</a></li>
+                    <li><a style="color:black" href="{% url 'posts:allshow' %}" class="btn btn-simple">show</a></li>
+                    <li><a style="color:black" href="{% url 'posts:jobs' %}" class="btn btn-simple">jobs</a></li>
+                    <li><a style="color:black" href="{% url 'posts:ask' %}" class="btn btn-simple">ask</a></li>
+             </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a style="color:black" href="{% url 'posts:all' %}" class="btn btn-simple">{{ user.username }}</a></li>
+                <li><a style="color:black" href="{% url 'accounts:logout' %}" class="btn btn-simple">Log out</a></li>
+              </ul>
+            {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color:black" href="{% url 'accounts:login' %}" class="btn btn-simple">Log In</a></li>
+                    <li><a style="color:black" href="{% url 'accounts:signup' %}" class="btn btn-simple">Sign up</a></li>
+            </ul>
+            {% endif %}
+        </div>
+      </nav>
+      <div class="container mycontent">
+        {% block content %}
+
+        <a href="{% url 'posts:all' %}"</a>
+
+        {% endblock %}
+
+      </div>
+
+
+
+  </body>
+</html>

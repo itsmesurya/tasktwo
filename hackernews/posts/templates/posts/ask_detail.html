@@ -1,0 +1,15 @@
+{% extends "posts/ask_base.html" %}
+
+{% load bootstrap3 %}
+
+{% block post_content %}
+<h4 style="color:blue">{{post.title}}</h4>
+<h3>{{post.text}}</h3>
+<h3 style="color:green">Comments</h3>
+    {% for comment in comments %}
+<ul>
+    <li><sub style="color:blue"> {{ comment.published_time}}</sub> --  {{comment.comment}} <sub style="color:red">by-{{ comment.user}}</sub>
+      <a href="{% url 'posts:comment' comment.post_id.id %}?comment_id={{comment.id}}" >Reply</a>
+</ul>
+    {% endfor %}
+    {% endblock %}

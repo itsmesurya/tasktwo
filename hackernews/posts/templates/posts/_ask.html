@@ -1,0 +1,47 @@
+<html>
+<head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='lib/jquery.js'></script>
+<script type="text/javascript" src="posts/b.js"></script>
+
+</head>
+
+{% extends "posts/post_base.html" %}
+
+{% block post_content %}
+<div class="col-md-8">
+	{% for post in post_list %}
+	<div class="container">
+				<b><h4 style="color:red"> {{post.id}}.{{post.title}}  <sub style="color:black">{{post.published_time}}</sub></h4>
+				<a href="{% url 'posts:detail' post.id %}"><h4 style="color:blue">{{post.url}}</h4>
+				</a></b>
+
+				<h5>
+					<b id="count">{{ 0 }}</b> votes |
+					<a style="color:green" id="upvote" class="button" id="up"><span class="glyphicon glyphicon-arrow-up"  aria-hidden="true">Upvote</span></a>&nbsp;|
+					<a href="{% url 'posts:comment' post.id %}"><u> {{post.total_comment}}-Comments</u></a>&nbsp;|
+					<a style="color:red" id="downvote" class="button" id="down"><span class="glyphicon glyphicon-arrow-down"  aria-hidden="true">Downvote</span></a>
+				</h5>
+	</div>
+	{% endfor %}
+</div>
+<script>
+$(function() {
+
+  var count = $('#count').val();
+
+  $('#upvote').on('click', function(){
+    count++;
+    $('#count').html(count);
+  });
+
+  $('#downvote').on('click', function(){
+    count--;
+    $('#count').html(count);
+  });
+
+});
+</script>
+{% endblock %}
+</html>

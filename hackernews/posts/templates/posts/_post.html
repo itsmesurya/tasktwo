@@ -1,0 +1,46 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='lib/jquery.js'></script>
+<script type="text/javascript" src="posts/b.js"></script>
+
+</head>
+<body>
+	 <div class="container">
+	 			<b><h4 style="color:red"> {{post.id}}.
+	         <a style="color:dark-grey" href="{{post.url}}">{{post.title}}</a>
+	 				 <sub style="color:black">{{post.published_time}}</sub></h4>
+	 				<!-- <h4 style="color:blue">{{post.url}}</h4> -->
+	 			</a></b>
+
+	 			<h5>
+          <b id="count">{{ 0 }}</b> votes |
+					<a id="upvote" style="color:green"><span class="glyphicon glyphicon-arrow-up"  aria-hidden="true">Upvote</span></a>|
+					<!-- <a href="#" style="color:green" class="button" id="up"><span class="glyphicon glyphicon-arrow-up"  aria-hidden="true">Upvote</span></a>&nbsp;| -->
+	 				<a href="{% url 'posts:comment' post.id %}"><u><strong style="color:blue"> {{post.total_comment}}</strong>-Comments</u></a> |
+					<a id="downvote" style="color:red"><span class="glyphicon glyphicon-arrow-down"  aria-hidden="true">Downvote</span></a>
+					<!-- <a href="#" style="color:red" class="button" id="down"><span class="glyphicon glyphicon-arrow-down"  aria-hidden="true">Downvote</span></a> -->
+	 			</h5>
+	 </div>
+<script type="text/javascript" src="b.js"></script>
+<script>
+$(function() {
+
+  var count = $('#count').val();
+
+  $('#upvote').on('click', function(){
+    count++;
+    $('#count').html(count);
+  });
+
+  $('#downvote').on('click', function(){
+    count--;
+    $('#count').html(count);
+  });
+
+});
+</script>
+
+
+ </body>
+</html>

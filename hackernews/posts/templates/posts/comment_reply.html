@@ -1,0 +1,15 @@
+{% extends "posts/post_base.html" %}
+
+{% load bootstrap3 %}
+hhhhhhhhhh
+{% block post_content %}
+sssssssssssssss
+{{comment.comment}}
+<h4> wwwwwwwwwwww</h4>
+
+<form method="POST" action="" id="ReplyForm">
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	<a href="{% url 'posts:comment' comment.post_id.id %}?comment_id={{comment.id}}" >Reply</a>
+</form>
+{% endblock %}

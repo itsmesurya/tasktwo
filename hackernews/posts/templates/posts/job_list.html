@@ -1,0 +1,14 @@
+{% extends "posts/post_base.html" %}
+
+{% load bootstrap3 %}
+
+{% block post_content %}
+<h5 style="color:green"> Jobs Page </h5>
+    {% for Job in Jobs %}
+<ul>
+  <li style="color:blue"> {{Job.J_title}}</li>
+    <a style="color:grey" href="{{Job.J_url}}">{{Job.J_url}}</a>
+    <sub style="color:red"> Posted: {{Job.published_time}}</sub>
+</ul>
+    {% endfor %}
+    {% endblock %}

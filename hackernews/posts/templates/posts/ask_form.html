@@ -1,0 +1,19 @@
+{% extends "posts/ask_base.html" %}
+
+{% load bootstrap3 %}
+
+{% block post_content %}
+<h4>Ask New Questions!!!</h4>
+<form method="POST" action="{% url 'posts:ask' %}" id="postForm">
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	<input type="submit" value="Post" class="btn btn-primary btn-large">
+</form>
+
+<div class="col-md-8">
+	{% for post in ask_list %}
+  {% include "posts/_ask.html" %}
+	{% endfor %}
+</div>
+
+{% endblock %}

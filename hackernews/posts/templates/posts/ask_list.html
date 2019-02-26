@@ -1,0 +1,8 @@
+{% extends "posts/ask_base.html" %}
+{% block post_content %}
+<div class="col-md-8">
+	{% for ask in ask_list %}
+  {% include "posts/_ask.html" %}
+	{% endfor %}
+</div>
+{% endblock %}

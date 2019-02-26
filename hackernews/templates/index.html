@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<a style="color:black" class='navbar-brand bigbrand' href="{% url 'posts:all' %}"></a>
+<p> Welcome {{ user.username }}</p>
+
+{% endblock %}
